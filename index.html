@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Color Grid</title>
-    <script src="script.js" defer></script>
-    <style>
-      td {
-        width: 50px;
-        height: 50px;
-        border: 1px solid black;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="controls">
-      <button id="addRow">Add Row</button>
-      <button id="addColumn">Add Column</button>
-      <button id="removeRow">Remove Row</button>
-      <button id="removeColumn">Remove Column</button>
-      <select id="colorPicker">
-        <option value="red">Red</option>
-        <option value="blue">Blue</option>
-        <option value="green">Green</option>
-      </select>
-      <button id="colorAll">Color All</button>
-      <button id="colorUncolored">Color Uncolored</button>
-      <button id="removeColor">Remove Color</button>
-    </div>
-    <table id="grid">
-      <!-- Grid rows and columns will go here -->
-    </table>
-  </body>
+<head>
+  <title>Grid with Color Picker</title>
+</head>
+<body>
+  <h1>Grid with Color Picker</h1>
+  <div>
+    <label for="colorPicker">Select a color:</label>
+    <select id="colorPicker">
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+      <option value="green">Green</option>
+    </select>
+    <button id="applyColor">Apply Color</button>
+    <button id="colorAll">Color All Cells</button>
+    <button id="colorUncolored">Color Uncolored Cells</button>
+    <button id="removeColor">Remove Color</button>
+  </div>
+  <div id="coloredElement" style="width: 100px; height: 100px;"></div>
+
+  <button id="addRow">Add Row</button>
+  <button id="addColumn">Add Column</button>
+  <button id="removeRow">Remove Row</button>
+  <button id="removeColumn">Remove Column</button>
+
+  <table id="grid">
+    <!-- Your grid rows and cells will be added here dynamically -->
+  </table>
+
+  <script src="your-script.js"></script>
+</body>
 </html>
