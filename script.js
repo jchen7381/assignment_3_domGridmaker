@@ -41,19 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  document.getElementById("removeColumn").addEventListener("click", function () {
-    const rows = grid.querySelectorAll("tr");
-    if (rows.length > 0) {
-      rows.forEach(row => {
-        const cells = row.querySelectorAll("td");
-        if (cells.length > 0) {
-          const lastCell = cells[cells.length - 1];
-          row.removeChild(lastCell);
-        }
-      });
-    }
-  });
-
   document.getElementById("colorPicker").addEventListener("change", function (event) {
     selectedColor = event.target.value
   })
