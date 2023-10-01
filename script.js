@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   let selectedColor = "black"; // Default color
+  let fillMode = false;
   const grid = document.getElementById("grid");
 
   document.getElementById("addRow").addEventListener("click", function () {
@@ -66,11 +67,16 @@ document.addEventListener("DOMContentLoaded", function () {
     })
   })
 
+  document.getElementById("switchMode").addEventListener("click", function() {
+    fillMode = !fillMode;
+    const modeText = fillMode ? "Mode: Fill Row & Column" : "Mode: Single Cell";
+    document.getElementById("switchMode").innerText = modeText;
+  });
 
   document.getElementById("grid").addEventListener("click", function (event) {
     const el = event.target;
     if (el.tagName === "TD") {
-      if (el.style.backgroundColor) {
+      if (fillMode ) {
         const { x, y } = el.getBoundingClientRect();
         document.querySelectorAll("#grid td").forEach((el) => {
           const rect = el.getBoundingClientRect();
@@ -84,4 +90,5 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   })
+  
 });
