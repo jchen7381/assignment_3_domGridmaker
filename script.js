@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let selectedColor = "black"; // Default color
+  let selectedColor = "#007BFF"; // Default color
   let fillMode = false;
   const grid = document.getElementById("grid");
 
@@ -42,8 +42,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  document.getElementById("colorPicker").addEventListener("change", function (event) {
+  document.getElementById("colorPicker").addEventListener("input", function (event) {
     selectedColor = event.target.value
+    const colorPickerButton = document.getElementById("colorPickerButton");
+    colorPickerButton.style.backgroundColor = selectedColor;
+
+    // dynamically change text color based on button background color
+    const rgb = parseInt(selectedColor.substring(1), 16);   
+    const r = (rgb >> 16) & 0xff;  
+    const g = (rgb >>  8) & 0xff;  
+    const b = (rgb >>  0) & 0xff; 
+
+    const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; 
+
+    if (luma > 230) {  
+      colorPickerButton.style.boxShadow = "inset 0 0 0 1px #007BFF";
+    } else {
+      colorPickerButton.style.boxShadow = "none";
+    }
+
+    colorPickerButton.style.color = luma < 128 ? 'white' : 'black';
+
   })
 
   document.getElementById("colorAll").addEventListener("click", function () {
