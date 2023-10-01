@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   let selectedColor = "black"; // Default color
   const grid = document.getElementById("grid");
-  const cssRoot = document.querySelector(":root")
-  cssRoot.style.setProperty("--selected-color", selectedColor)
 
   document.getElementById("addRow").addEventListener("click", function () {
     const newRow = document.createElement("tr");
@@ -56,16 +54,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  document.getElementById("colorPicker").addEventListener("input", function (event) {
+  document.getElementById("colorPicker").addEventListener("change", function (event) {
     selectedColor = event.target.value
-    cssRoot.style.setProperty("--selected-color", selectedColor)
+  })
+
+  document.getElementById("colorAll").addEventListener("click", function () {
+    document.querySelectorAll("#grid td").forEach((el) => {
+      el.style.backgroundColor = selectedColor
+    })
   })
 
   document.getElementById("grid").addEventListener("click", function (event) {
     if (event.target.tagName === "TD") {
-      event.target.classList.toggle("selected")
+      event.target.style.backgroundColor = selectedColor
     }
-
   })
+
 
 });
