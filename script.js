@@ -64,11 +64,22 @@ document.addEventListener("DOMContentLoaded", function () {
     })
   })
 
+  document.getElementById("colorUncolored").addEventListener("click", function () {
+    document.querySelectorAll("#grid td").forEach((el) => {
+      if (el.style.backgroundColor) {
+        return;
+      }
+      el.style.backgroundColor = selectedColor
+    })
+  })
+
+
   document.getElementById("grid").addEventListener("click", function (event) {
     if (event.target.tagName === "TD") {
       event.target.style.backgroundColor = selectedColor
     }
   })
+
 
 
 });
