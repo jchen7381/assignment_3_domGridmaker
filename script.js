@@ -20,4 +20,11 @@ document.addEventListener("DOMContentLoaded", function() {
       row.appendChild(newCell);
     });
   });
+
+  document.getElementById("removeRow").addEventListener("click", function() {
+    const numRows = grid.querySelectorAll("tr").length;
+    if (numRows > 0) {
+      grid.lastChild.remove();
+    }
+  });
 });
