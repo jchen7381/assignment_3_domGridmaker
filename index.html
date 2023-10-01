@@ -3,13 +3,7 @@
 <head>
   <title>Color Grid</title>
   <script src="script.js" defer></script>
-  <style>
-    td {
-      width: 50px;
-      height: 50px;
-      border: 1px solid black;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -18,7 +12,10 @@
     <button id="addColumn">Add Column</button>
     <button id="removeRow">Remove Row</button>
     <button id="removeColumn">Remove Column</button>
-    <input id="colorPicker" type="color">
+    <div class="color-button-wrapper">
+      <button id="colorPickerButton" class="color-button">Pick Color</button>
+      <input id="colorPicker" type="color" class="hidden-color-picker">
+    </div>
     <button id="colorAll">Color All</button>
     <button id="colorUncolored">Color Uncolored</button>
     <button id="removeColor">Remove Color</button>
