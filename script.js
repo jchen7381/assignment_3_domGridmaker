@@ -73,6 +73,12 @@ document.addEventListener("DOMContentLoaded", function () {
     })
   })
 
+  document.getElementById("removeColor").addEventListener("click", function () {
+    document.querySelectorAll("#grid td").forEach((el) => {
+      el.style.backgroundColor = ""
+    })
+  })
+
 
   document.getElementById("grid").addEventListener("click", function (event) {
     if (event.target.tagName === "TD") {
