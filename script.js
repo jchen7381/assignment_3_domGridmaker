@@ -81,11 +81,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   document.getElementById("grid").addEventListener("click", function (event) {
-    if (event.target.tagName === "TD") {
-      event.target.style.backgroundColor = selectedColor
+    const el = event.target;
+    if (el.tagName === "TD") {
+      if (el.style.backgroundColor) {
+        const { x, y } = el.getBoundingClientRect();
+        document.querySelectorAll("#grid td").forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.x === x || rect.y === y) {
+            el.style.backgroundColor = selectedColor
+          }
+        })
+      }
+      else {
+        el.style.backgroundColor = selectedColor
+      }
     }
   })
-
-
-
 });
