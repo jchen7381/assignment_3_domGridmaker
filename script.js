@@ -4,22 +4,30 @@ document.addEventListener("DOMContentLoaded", function () {
   const grid = document.getElementById("grid");
 
   document.getElementById("addRow").addEventListener("click", function () {
-    const newRow = document.createElement("tr");
-    const numCols = grid.querySelector("tr")
-      ? grid.querySelector("tr").children.length
-      : 1;
-    for (let i = 0; i < numCols; i++) {
-      const newCell = document.createElement("td");
-      newRow.appendChild(newCell);
+    const windowHeight = window.innerHeight;
+    const maxRows = Math.floor(windowHeight / 65);
+    if (grid.rows.length < maxRows) {
+      const newRow = document.createElement("tr");
+      const numCols = grid.querySelector("tr")
+        ? grid.querySelector("tr").children.length
+        : 1;
+      for (let i = 0; i < numCols; i++) {
+        const newCell = document.createElement("td");
+        newRow.appendChild(newCell);
+      }
+      grid.appendChild(newRow);
     }
-    grid.appendChild(newRow);
   });
 
   document.getElementById("addColumn").addEventListener("click", function () {
-    grid.querySelectorAll("tr").forEach((row) => {
-      const newCell = document.createElement("td");
-      row.appendChild(newCell);
-    });
+    const windowWidth = window.innerWidth;
+    const maxCols = Math.floor(windowWidth / 65);
+    if (grid.querySelectorAll("tr")[0].children.length < maxCols) {
+      grid.querySelectorAll("tr").forEach((row) => {
+        const newCell = document.createElement("td");
+        row.appendChild(newCell);
+      });
+    }
   });
 
   document.getElementById("removeRow").addEventListener("click", function () {
